@@ -24,7 +24,8 @@ function UpdateUser() {
             const update  = await axios.patch(`${window.location.protocol}://${window.location.hostname}/api/users/`+id,details);
             
             console.log(update.data);
-            history.push(`${window.location.hostname}`);
+            history.push(`${window.location.protocol}://${window.location.hostname}`);
+
 
             // console.log(update.data,"World");
         } catch (error) {
