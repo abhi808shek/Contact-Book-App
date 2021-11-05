@@ -15,7 +15,7 @@ function AddUser() {
     }
 
     const addUser =async ()=>{
-        const  User = await axios.post(`https://${window.location.hostname}/api/users`,info);
+        const  User = await axios.post(`${window.location.protocol}://${window.location.hostname}/api/users`,info);
         console.log(User.data);
         history.push(`${window.location.hostname}`);
     }
