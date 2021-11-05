@@ -15,7 +15,7 @@ function AddUser() {
     }
 
     const addUser =async ()=>{
-        const  User = await axios.post('http://localhost:8000/api/users',info);
+        const  User = await axios.post(`http://${window.location.hostname}/api/users`,info);
         console.log(User.data);
         history.push("/");
     }

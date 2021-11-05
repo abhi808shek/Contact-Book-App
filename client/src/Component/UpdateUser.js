@@ -21,7 +21,7 @@ function UpdateUser() {
             console.log(id,"Hello");
             console.log("Details 22",details)
             
-            const update  = await axios.patch("http://localhost:8000/api/users/"+id,details);
+            const update  = await axios.patch(`http://${window.location.hostname}/api/users/`+id,details);
             
             console.log(update.data);
             history.push("/");
