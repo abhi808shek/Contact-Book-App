@@ -8,7 +8,7 @@ function ContactList() {
 
     const getUsersData = async () => {
         try {
-            const response = await axios.get(`${window.location.protocol}://${window.location.hostname}/api/users`);
+            const response = await axios.get(`${window.location.protocol}//${window.location.hostname}/api/users`);
             setContact(response.data);
             console.log(response)
 
@@ -29,7 +29,7 @@ function ContactList() {
     // deleted User
     const deltedUser = async (_id) => {
         console.log(_id, "Hello");
-        const result = await axios.delete(`${window.location.protocol}://${window.location.hostname}/api/users/`+_id);
+        const result = await axios.delete(`${window.location.protocol}//${window.location.hostname}/api/users/`+_id);
         console.log(result.data);
         getUsersData();
         console.log(_id, "Wolrd");
