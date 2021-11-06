@@ -18,18 +18,14 @@ function UpdateUser() {
     const updateUser = async()=>{
 
         try {
-            console.log(id,"Hello");
-            console.log("Details 22",details)
-            
+
             const update  = await axios.patch(`${window.location.protocol}//${window.location.hostname}/api/users/`+id,details);
             
             console.log(update.data);
-            history.push(`${window.location.protocol}//${window.location.hostname}`);
+            history.push("/");
 
-
-            // console.log(update.data,"World");
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
         }
     }
     return (    

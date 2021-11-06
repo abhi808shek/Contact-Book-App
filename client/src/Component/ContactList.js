@@ -10,10 +10,10 @@ function ContactList() {
         try {
             const response = await axios.get(`${window.location.protocol}//${window.location.hostname}/api/users`);
             setContact(response.data);
-            console.log(response)
+
 
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
         }
 
     }
@@ -22,17 +22,14 @@ function ContactList() {
             getUsersData();
         }
         catch (error) {
-            console.error("Something Went wrong");
+           console.log(error.message);
         }
     }, [check]);
 
     // deleted User
     const deltedUser = async (_id) => {
-        console.log(_id, "Hello");
         const result = await axios.delete(`${window.location.protocol}//${window.location.hostname}/api/users/`+_id);
-        console.log(result.data);
         getUsersData();
-        console.log(_id, "Wolrd");
     }
     const contactList = contacts.map((contact) => {
         return (
