@@ -34,9 +34,7 @@ function AddUser() {
                 <input type="email" value={email} onChange={(e)=>{setEmail(e.target.value)}} name="email" id="" />
                 <button className="btn btn-info my-3 font-weight-bold" style={{boxShadow:"0px 0px 10px black"}} onClick={addUser}>Add Contact</button>
             </div>
-
-           
-           
+        
         </>
     )
 }
