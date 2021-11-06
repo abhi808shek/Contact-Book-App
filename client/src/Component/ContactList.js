@@ -28,7 +28,7 @@ function ContactList() {
 
     // deleted User
     const deltedUser = async (_id) => {
-        const result = await axios.delete(`${window.location.protocol}//${window.location.hostname}/api/users/`+_id);
+        await axios.delete(`${window.location.protocol}//${window.location.hostname}/api/users/`+_id);
         getUsersData();
     }
     const contactList = contacts.map((contact) => {
