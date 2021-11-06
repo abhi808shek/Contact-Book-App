@@ -1,6 +1,6 @@
 const express = require("express");
 const route = require("./src/Routers/Api");
-const path = require('path');
+// const path = require('path');
 
 require("./src/Database/db")
 require('dotenv').config()
@@ -18,9 +18,9 @@ if(process.env.NODE_ENV === 'production'){
     //set static folder
     app.use(express.static('public/build'));
 }
-app.get('*',(req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'build', 'index.html'));
-});
+// app.get('*',(req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'public', 'build', 'index.html'));
+// });
 
 
 app.listen(PORT,()=>{
