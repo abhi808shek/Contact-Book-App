@@ -9,7 +9,6 @@ const createUser = async (req, res) => {
         console.log(createStudent);
     } catch (error) {
         console.log(error.message);
-        console.error("Cannot Insert User Data");
     }
 }
 
@@ -20,7 +19,7 @@ const getUser = async (req, res) => {
         res.send(getStudent);
         console.log(getStudent);
     } catch (error) {
-        console.error("Cannot Find Data");
+        console.log(error.message);
     }
 }
 // Update User
@@ -46,7 +45,6 @@ const updateUser = async (req, res) => {
     }
         catch (error) {
             res.status(400).send()
-            // console.error("Cannot Update User  Data");
             console.log(error.message);
         }
 
