@@ -11,7 +11,7 @@ function Navbar() {
         <NavLink to="/" className="navbar-brand"> <i className="fas fa-address-book pr-2"></i>Contact-App</NavLink>
          <form className="form-inline">
           <NavLink to="/adduser">
-           <button className="btn my-2 my-sm-0 text-white" type="button">Add Contact</button>
+           <button className="btn mb-1 text-white" style={{ backgroundColor:"seagreen", border: "none", boxShadow: "0px 0px 8px black" }}>Add Contact</button>
           </NavLink>
         </form>
       </nav>
