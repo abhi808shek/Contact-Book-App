@@ -1,6 +1,6 @@
 const express = require("express");
 const route = require("./src/Routers/Api");
-const path = require('path');
+// const path = require('path');
 
 require("./src/Database/db")
 require('dotenv').config()

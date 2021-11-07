@@ -1,5 +1,5 @@
 const express = require("express");
-const  {createUser,getUser,updateUser,deleteSingleUser,deleteManyUser} = require("../Controllers/ApiControl")
+const  {createUser,getUser,updateUser,deleteSingleUser,deleteManyUser,getStudentById} = require("../Controllers/ApiControl")
 const router = express.Router();
 
 router.route("/users")
@@ -8,6 +8,7 @@ router.route("/users")
 .delete(deleteManyUser);
 
 router.route("/users/:id")
+.get(getStudentById)
 .patch(updateUser)
 .delete(deleteSingleUser);
 

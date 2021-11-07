@@ -6,7 +6,6 @@ const createUser = async (req, res) => {
         const user = new UserModel(req.body)
         const createStudent = await user.save();
         res.status(201).send(createStudent);
-        console.log(createStudent);
     } catch (error) {
         console.log(error.message);
     }
@@ -17,7 +16,17 @@ const getUser = async (req, res) => {
     try {
         const getStudent = await UserModel.find();
         res.send(getStudent);
-        console.log(getStudent);
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+// get User by ID
+const getStudentById = async (req, res) => {
+    try {
+        const id  = req.params.id
+        const getStudent = await UserModel.findById(id);
+        res.send(getStudent);
+
     } catch (error) {
         console.log(error.message);
     }
@@ -26,6 +35,7 @@ const getUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const _id = req.params.id;
+
         let updateStudent = await UserModel.findById({ _id })
        const obj = {
        }
@@ -40,7 +50,6 @@ const updateUser = async (req, res) => {
        }
 
         updateStudent = await UserModel.findByIdAndUpdate({_id},obj,{new:true});
-        console.log(updateStudent,"line 32");
         res.json(updateStudent);
     }
         catch (error) {
@@ -54,8 +63,7 @@ const updateUser = async (req, res) => {
 const deleteSingleUser = async (req, res) => {
         try {
             const _id = req.params.id;
-            const deleteStudent = await UserModel.findByIdAndDelete({ _id })
-            console.log(_id);
+            const deleteStudent = await UserModel.findByIdAndDelete({ _id });
             if (!_id) {
                 return res.status(400).send()
             }
@@ -80,4 +88,4 @@ const deleteSingleUser = async (req, res) => {
         }
 
     }
-    module.exports = { createUser, getUser, updateUser, deleteSingleUser,deleteManyUser };
+    module.exports = { createUser, getUser, updateUser, deleteSingleUser,deleteManyUser,getStudentById };

@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 const usersSchema = mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:true,
+        min:4,
+        max:15
+
     },
     phone_no:{
         type:Number,
@@ -11,7 +14,8 @@ const usersSchema = mongoose.Schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     date:{
         type:Date,

@@ -4,7 +4,7 @@ const URI = `mongodb+srv://h4ae1r:powerdown@cluster0.zlfw6.mongodb.net/myFirstDa
 const dataBaseConnection = async()=>{
 
   try {
-    await  mongoose.connect(URI)
+    await mongoose.connect(URI)
     console.log("DataBase Connected Successfullyy....");
   } catch (error) {
     console.log(error.message);
