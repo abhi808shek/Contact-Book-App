@@ -35,7 +35,7 @@ function ContactList() {
 
     // deleted User
     const deltedUser = async (_id) => {
-        const result = await axios.delete(`${window.location.protocol}/${window.location.hostname}/api/users/+${_id}`);
+        await axios.delete(`/api/users/+${_id}`);
         getUsersData();
     }
 
@@ -54,7 +54,7 @@ function ContactList() {
 
 
     const deleteAll = async () => {
-        await axios.delete(`${window.location.protocol}/${window.location.hostname}/api/users`)
+        await axios.delete(`/api/users`)
     }
     return (
         <>

@@ -12,8 +12,7 @@ function UpdateUser(props) {
     useEffect(() => {
         let userDetails = async () => {
         
-            const userGetById = await axios.get(`http://localhost:8000/api/users/${id}`)
-            console.log("USERDATA", userGetById.data);
+            const userGetById = await axios.get(`/api/users/${id}`)
             setName(userGetById.data.name)
             setPhoneNo(userGetById.data.phone_no)
             setEmail(userGetById.data.email)
@@ -28,7 +27,7 @@ function UpdateUser(props) {
     }
     const updateUser = async (id) => {
         try {
-            const xyz = await axios.patch(`${window.location.protocol}/${window.location.hostname}/api/users/${id}`,details);
+            await axios.patch(`/api/users/${id}`,details);
             history.push("/");
 
         } catch (error) {
