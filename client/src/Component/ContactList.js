@@ -11,7 +11,7 @@ function ContactList() {
 
     const getUsersData = async () => {
         try {
-            const response = await axios.get(`${window.location.protocol}/${window.location.hostname}/api/users`);
+            const response = await axios.get(`/api/users`);
             setContact(response.data);
 
 
