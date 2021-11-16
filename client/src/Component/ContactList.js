@@ -31,7 +31,7 @@ function ContactList() {
            }
         }  
         getUsers();
-    },[]);
+    },[check,filteredData]);
     // deleted User
     const deltedUser = async (_id) => {
     try {
