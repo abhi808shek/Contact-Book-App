@@ -12,9 +12,8 @@ function ContactList() {
     const getUsersData = async () => {
         try {
             const response = await axios.get(`/api/users`);
+            console.log(response.data);
             setContact(response.data);
-         
-
 
         } catch (error) {
             console.log(error.message);
@@ -23,15 +22,15 @@ function ContactList() {
     }
 
     useEffect(() => {
-        const getAllUser = async()=>
-        {  
-            await getUsersData()
-            console.log("Inside UseEffect");
-            if (search == "") {
-                setFilteredData(contacts)
-            }
-        }
-        getAllUser();
+        const getUsers = async()=>
+        {
+           await getUsersData()
+           console.log("Inside UseEffect");
+           if (search == "") {
+               setFilteredData(contacts)
+           }
+        }  
+        getUsers();
     },[]);
     // deleted User
     const deltedUser = async (_id) => {
@@ -55,8 +54,14 @@ function ContactList() {
 
 
     const deleteAll = async () => {
-        const delUser = await axios.delete(`/api/users`)
+        await axios.delete(`/api/users`)
     }
+    
+    const contactList =filteredData.length == 0 ? (<h4 style={{ position: "absolute", left: "40%" }}>No Data Found</h4>) : filteredData.map((contact) => {
+        return (
+            <Contact key={contact._id} contact={contact} check={check} deltedUser={deltedUser} />
+        )
+    })
     return (
         <>
 
@@ -83,11 +88,7 @@ function ContactList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredData.length == 0 ? (<h4 style={{ position: "absolute", left: "40%" }}>No Data Found</h4>) : filteredData.map((contact) => {
-                            return (
-                                <Contact key={contact._id} contact={contact} check={check} deltedUser={deltedUser} />
-                            )
-                        })}
+                       {contactList}
                     </tbody>
                 </table>
             </div>
