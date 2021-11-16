@@ -24,11 +24,14 @@ function ContactList() {
 
     useEffect(() => {
         const getAllUser = async()=>
-        {  await getUsersData()}
-        console.log("Inside UseEffect");
-        if (search == "") {
-            setFilteredData(contacts)
+        {  
+            await getUsersData()
+            console.log("Inside UseEffect");
+            if (search == "") {
+                setFilteredData(contacts)
+            }
         }
+        getAllUser();
     },[]);
     // deleted User
     const deltedUser = async (_id) => {

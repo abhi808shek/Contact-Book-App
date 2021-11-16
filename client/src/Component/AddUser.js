@@ -14,8 +14,8 @@ function AddUser() {
         email:email
     }
 
-    const addUser =async ()=>{
-        await axios.post(`/api/users`,info);
+    const addUser = async ()=>{
+        await axios.post(`https://contact-books-app.herokuapp.com/api/users`,info);
         history.push("/");
     }
    
