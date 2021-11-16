@@ -13,6 +13,7 @@ function ContactList() {
         try {
             const response = await axios.get(`/api/users`);
             setContact(response.data);
+         
 
 
         } catch (error) {
@@ -20,34 +21,26 @@ function ContactList() {
         }
 
     }
-    useEffect(async () => {
-        try {
-            await getUsersData();
-            if (search === "") {
-                setFilteredData(contacts)
-            }
 
+    useEffect(() => {
+        const getAllUser = async()=>
+        {  await getUsersData()}
+        console.log("Inside UseEffect");
+        if (search == "") {
+            setFilteredData(contacts)
         }
-        catch (error) {
-            console.log(error.message);
-        }
-    }, [check, filteredData]);
-
+    },[]);
     // deleted User
     const deltedUser = async (_id) => {
-        await axios.delete(`/api/users/+${_id}`);
-        getUsersData();
+        const delUser = await axios.delete(`/api/users/${_id}`);
+        console.log(delUser);
     }
 
-    const contactList = filteredData.length == 0 ? (<h4 style={{ position: "absolute", left: "40%" }}>No Data Found</h4>) : filteredData.map((contact) => {
-        return (
-            <Contact key={contact._id} contact={contact} check={check} deltedUser={deltedUser} />
-        )
-    })
+    // const contactList =
     const filterData = (e) => {
         setSearch(e.target.value);
         const result = contacts.filter((element) => {
-            return element.name.includes(search) || element.phone_no.toString().includes(search) || element.email.includes(search)
+            return element.name.includes(e.target.value) || element.phone_no.toString().includes(e.target.value) || element.email.includes(e.target.value)
         })
         setFilteredData(result)
     }
@@ -82,7 +75,11 @@ function ContactList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {contactList}
+                        {filteredData.length == 0 ? (<h4 style={{ position: "absolute", left: "40%" }}>No Data Found</h4>) : filteredData.map((contact) => {
+                            return (
+                                <Contact key={contact._id} contact={contact} check={check} deltedUser={deltedUser} />
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>

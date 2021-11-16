@@ -1,4 +1,7 @@
 import React from 'react'
+// import LoginUser from './Component/LoginUser';
+// import Register from './Component/Register';
+
 import AddUser from './Component/AddUser';
 import ContactList from './Component/ContactList';
 import Navbar from './Component/Navbar';
@@ -16,7 +19,9 @@ function App() {
         <Route path="/updateuser/:id" component={UpdateUser}/>
 
       </Switch>
-    </Router>
+    </Router> 
+   {/* <Register />
+    <LoginUser /> */}
     </>
   )
 }

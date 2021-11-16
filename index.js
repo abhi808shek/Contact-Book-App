@@ -1,6 +1,8 @@
 const express = require("express");
 const route = require("./src/Routers/Api");
 const path = require('path');
+const userRouter = require("./src/Routers/userRouter")
+const authRouter = require("./src/Routers/authRouter")
 
 require("./src/Database/db")
 require('dotenv').config()
@@ -10,7 +12,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+
 app.use("/api/",route);
+app.use("/",userRouter);
+app.use("/",authRouter)
+
 
 const PORT = process.env.PORT || 8000;
 

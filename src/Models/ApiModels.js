@@ -1,21 +1,26 @@
 const mongoose = require("mongoose");
-
+const emailValidator = require("email-validator");
 const usersSchema = mongoose.Schema({
     name:{
         type:String,
         required:true,
-        min:4,
-        max:15
+        minLenght:4,
+        maxLength:15
 
     },
     phone_no:{
         type:Number,
-        required:true
+        required:true,
+        minLength:10,
+        maxLength:10
     },
     email:{
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        validate:function() {
+            return emailValidator.validate(this.email)
+        }
     },
     date:{
         type:Date,
