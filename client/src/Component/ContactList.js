@@ -32,10 +32,15 @@ function ContactList() {
     },[]);
     // deleted User
     const deltedUser = async (_id) => {
-        const delUser = await axios.delete(`/api/users/${_id}`);
-        console.log(delUser);
+    try {
+            const delUser = await axios.delete(`/api/users/${_id}`);
+            console.log(delUser.data);
+            getUsersData();
+        }
+     catch (error) {
+        console.log(error.message);
     }
-
+    }
     // const contactList =
     const filterData = (e) => {
         setSearch(e.target.value);
@@ -47,7 +52,7 @@ function ContactList() {
 
 
     const deleteAll = async () => {
-        await axios.delete(`/api/users`)
+        const delUser = await axios.delete(`/api/users`)
     }
     return (
         <>
